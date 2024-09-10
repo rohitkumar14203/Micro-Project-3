@@ -7,10 +7,10 @@ const displayKeyValue = document.querySelector(".js-display");
 // }
 
 function display(input) {
-  if (input === "+" || input === "*" || input === "/") {
+  if (input === "+" || input === "x" || input === "/" || input === ".") {
     if (
       displayKeyValue.value === "" ||
-      "+*./".includes(displayKeyValue.value.slice(-1))
+      "+*.x/".includes(displayKeyValue.value.slice(-1))
     ) {
       return;
     }
@@ -37,6 +37,7 @@ function calc() {
   // }
 
   try {
+    displayKeyValue.value = displayKeyValue.value.replace(/x/g, "*");
     const result = eval(displayKeyValue.value);
     if (!isNaN(result)) {
       displayKeyValue.value = parseFloat(result.toFixed(2));
