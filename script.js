@@ -7,10 +7,10 @@ const displayKeyValue = document.querySelector(".js-display");
 // }
 
 function display(input) {
-  if (input === "+" || input === "-" || input === "*" || input === "/") {
+  if (input === "+" || input === "*" || input === "/") {
     if (
       displayKeyValue.value === "" ||
-      "+-*./".includes(displayKeyValue.value.slice(-1))
+      "+*./".includes(displayKeyValue.value.slice(-1))
     ) {
       return;
     }
