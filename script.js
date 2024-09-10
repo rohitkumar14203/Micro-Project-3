@@ -10,12 +10,16 @@ function display(input) {
   if (input === "+" || input === "-" || input === "*" || input === "/") {
     if (
       displayKeyValue.value === "" ||
-      "+-*/".includes(displayKeyValue.value.slice(-1))
+      "+-*./".includes(displayKeyValue.value.slice(-1))
     ) {
       return;
     }
   }
   displayKeyValue.value += input;
+}
+
+function resetDisplay() {
+  displayKeyValue.value = "";
 }
 
 function deletButton() {
