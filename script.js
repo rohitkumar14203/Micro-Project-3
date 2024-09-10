@@ -1,12 +1,21 @@
 const displayKeyValue = document.querySelector(".js-display");
 
-function display(input) {
-  //displayKeyValue.value = displayKeyValue.value + input;
-  displayKeyValue.value += input;
-}
+//
 
-function resetDisplay() {
-  displayKeyValue.value = " ";
+// function resetDisplay() {
+//   displayKeyValue.value = " ";
+// }
+
+function display(input) {
+  if (input === "+" || input === "-" || input === "*" || input === "/") {
+    if (
+      displayKeyValue.value === "" ||
+      "+-*/".includes(displayKeyValue.value.slice(-1))
+    ) {
+      return;
+    }
+  }
+  displayKeyValue.value += input;
 }
 
 function deletButton() {
@@ -17,13 +26,23 @@ function deletButton() {
 }
 
 function calc() {
+  // try {
+  //   displayKeyValue.value = eval(displayKeyValue.value);
+  // } catch (error) {
+  //   displayKeyValue.value = "Error";
+  // }
+
   try {
-    displayKeyValue.value = eval(displayKeyValue.value);
+    const result = eval(displayKeyValue.value);
+    if (!isNaN(result)) {
+      displayKeyValue.value = parseFloat(result.toFixed(2));
+    } else {
+      displayKeyValue.value = "Error";
+    }
   } catch (error) {
     displayKeyValue.value = "Error";
   }
 }
-
 function dbl() {
   displayKeyValue.value = "Error";
 }
